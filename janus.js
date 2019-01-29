@@ -1,10 +1,12 @@
 var express = require("express");
+var bodyParser = require("body-parser");
+
 
 var routes = require("./routes/routes.js");
 var app = express();
 app.use(express.static(__dirname + '/www' ));
-app.set('views', __dirname + '/www')
-app.set('view engine', 'ejs');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 routes(app);
 var server = app.listen(23000, function () {
