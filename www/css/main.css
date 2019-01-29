@@ -1,0 +1,51 @@
+body {
+    max-width: 600px;
+    margin: auto;
+    margin-top: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+.header {
+    margin: auto;
+    text-align: center;
+    font-size: 16px;
+}
+
+.main {
+    background-color: #b0b4b6;
+    border-radius: 5px;
+    padding: 15px;
+    margin: auto;
+    color: white;
+}
+
+#input {
+    width: 99%;
+    height: 200px;
+    display: block;
+    margin: 0;
+    border: 2px solid #b0b4b6;
+    border-radius: 0;
+    color: #444;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+button {
+    border-radius: 5px;
+    width: 30%;
+    height: 35px;
+    border: 0px;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+}
+
+#encrypt {
+    margin: auto;
+    background-color: #00d1b2;
+}
+
+#decrypt {
+    background-color: #fcbb24;
+}
