@@ -1,5 +1,5 @@
 const crypto = require('crypto')
-const key = '1JemjN9N6UWB0e@jiDxdHIMnsOIv%NvKCkAK%0clMNU6'
+const key = '1JemjN9N6UWB0e@jiDxdHIMnsOIv%NvKCkAKlMNU6'
 
 function encrypt( text , password )
 {
@@ -21,23 +21,23 @@ const appRouter = app => {
 
     app.get("/" , (req, res) => 
     { 
-        res.sendFile( 'index' )    
+        res.status(200).send( 'index' )    
     });
 
     app.post("/encrypt" , (req,res) => {
         let enc = encrypt( req.body.input , key )
         res.setHeader('Content-Type', 'application/json');
-        res.send({ 'result': enc });
+        res.status(200).send({ 'result': enc });
     });
 
     app.post("/decrypt" , (req,res) => {
         let enc = decrypt( req.body.input , key )
         res.setHeader('Content-Type', 'application/json');
-        res.send({ 'result': enc });
+        res.status(200).send({ 'result': enc });
     });
 
     app.get('*', function(req, res){
-        res.send('Not found my friend!', 404);
+        res.status(404).send( 'Not found my friend!' );
     });
 };
 

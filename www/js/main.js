@@ -53,3 +53,11 @@ document.getElementById('decrypt').addEventListener('click', function()
             })
             .catch(err => console.error(err))
 });
+
+document.getElementById('copybutton').addEventListener('click', function(){
+    
+    document.getElementById('input').select();
+
+    document.execCommand("copy")
+  
+});

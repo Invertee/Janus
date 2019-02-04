@@ -1,5 +1,5 @@
 body {
-    max-width: 600px;
+    max-width: 850px;
     margin: auto;
     margin-top: 15px;
     font-family: 'Courier New', Courier, monospace;
@@ -34,6 +34,16 @@ body {
 button {
     border-radius: 5px;
     width: 30%;
+    height: 35px;
+    border: 0px;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+}
+
+.smallbutton {
+    border-radius: 5px;
+    width: 10%;
     height: 35px;
     border: 0px;
     color: white;
