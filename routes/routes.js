@@ -1,17 +1,17 @@
 const crypto = require('crypto')
-const key = '1JemjN9N6UWB0e@jiDxdHIMnsOIv%NvKCkAKlMNU6'
+const config = require('../config');
 
-function encrypt( text , password )
+function encrypt( text , password , scheme )
 {
-    var cipher = crypto.createCipher( 'aes-256-ctr' , password )
+    var cipher = crypto.createCipher( scheme , password )
     var crypted = cipher.update(text,'utf8','hex')
     crypted += cipher.final('hex');
     return crypted;
 }
 
-function decrypt( text , password ) 
+function decrypt( text , password , scheme ) 
 {
-    var decipher = crypto.createDecipher( 'aes-256-ctr' , password )
+    var decipher = crypto.createDecipher( scheme , password )
     var dec = decipher.update(text,'hex','utf8')
     dec += decipher.final('utf8');
     return dec;
@@ -25,13 +25,13 @@ const appRouter = app => {
     });
 
     app.post("/encrypt" , (req,res) => {
-        let enc = encrypt( req.body.input , key )
+        let enc = encrypt( req.body.input , config.encpassword , config.encscheme )
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send({ 'result': enc });
     });
 
     app.post("/decrypt" , (req,res) => {
-        let enc = decrypt( req.body.input , key )
+        let enc = decrypt( req.body.input , config.encpassword , config.encscheme )
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send({ 'result': enc });
     });
