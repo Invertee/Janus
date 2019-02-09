@@ -1,6 +1,6 @@
 ## Janus
 
-A very simple text encryption/decryption to help stop leaving secrets lying about. 
+A very simple text encryption/decryption microservice to help stop leaving secrets lying about. 
 
 Everything is encrypted with the same key for simplicity and everything is handled by one page.
 
