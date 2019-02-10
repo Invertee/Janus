@@ -1,5 +1,4 @@
 const crypto = require('crypto')
-const config = require('../config');
 
 function encrypt( text , password , scheme )
 {
@@ -25,13 +24,13 @@ const appRouter = app => {
     });
 
     app.post("/encrypt" , (req,res) => {
-        let enc = encrypt( req.body.input , config.encpassword , config.encscheme )
+        let enc = encrypt( req.body.input , process.env.encPassword , process.env.encScheme )
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send({ 'result': enc });
     });
 
     app.post("/decrypt" , (req,res) => {
-        let enc = decrypt( req.body.input , config.encpassword , config.encscheme )
+        let enc = decrypt( req.body.input , process.env.encPassword , process.env.encScheme )
         res.setHeader('Content-Type', 'application/json');
         res.status(200).send({ 'result': enc });
     });

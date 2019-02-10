@@ -12,7 +12,7 @@ Named after the two headed Roman God of transition, thought it was fitting. 👍
 ```git clone https://github.com/Invertee/Janus.git & cd Janus```
 ##### Install modules
 ```npm install```
-##### Edit config.js and run
+##### Edit .env config and run
 ```node janus.js```
 
 
