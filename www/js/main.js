@@ -26,8 +26,17 @@ document.getElementById('encrypt').addEventListener('click', function()
                 return data.json();
             })
             .then(data => {
-                console.log(data)
-                document.getElementById('input').value = data.result
+                if (data.status === 'okay')
+                {
+                    document.getElementById('input').value = data.result
+                } else {
+                    let div = document.getElementById('input')
+                    div.value = data.result
+                        div.classList.add('flash');
+                        setTimeout(function() {
+                            div.classList.remove('flash');
+                        }, 500);
+                }
             })
             .catch(err => console.error(err))
 });
@@ -48,8 +57,17 @@ document.getElementById('decrypt').addEventListener('click', function()
                 return data.json();
             })
             .then(data => {
-                console.log(data)
-                document.getElementById('input').value = data.result
+                if (data.status === 'okay')
+                {
+                    document.getElementById('input').value = data.result
+                } else {
+                    let div = document.getElementById('input')
+                    div.value = data.result
+                        div.classList.add('flash');
+                        setTimeout(function() {
+                            div.classList.remove('flash');
+                        }, 500);
+                }
             })
             .catch(err => console.error(err))
 });

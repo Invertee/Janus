@@ -10,6 +10,7 @@ const app = express();
 app.use(express.static(__dirname + '/www' ));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.disable('x-powered-by')
 
 routes(app);
 const server = app.listen( process.env.port, function () {
