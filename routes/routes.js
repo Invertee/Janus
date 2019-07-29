@@ -1,7 +1,7 @@
 const crypto = require('crypto')
 
 function encrypt( text , password , scheme )
-{
+{   
     var cipher = crypto.createCipher( scheme , password )
     var crypted = cipher.update(text,'utf8','hex')
     crypted += cipher.final('hex');
@@ -24,15 +24,34 @@ const appRouter = app => {
     });
 
     app.post("/encrypt" , (req,res) => {
-        let enc = encrypt( req.body.input , process.env.encPassword , process.env.encScheme )
+        let enc, status = ''
+        if (req.body.input.length == 0 || req.body.input === 'Empty String') {enc = 'Empty String' ; status = 'error'} else {
+            try {
+                enc = encrypt( req.body.input , process.env.encPassword , process.env.encScheme )
+                status = 'okay'
+            } catch {
+                enc = 'Unable to encrypt string'
+                status = 'error'
+            }
+        }
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).send({ 'result': enc });
+        res.status(200).send({ 'result': enc , 'status': status });
     });
 
     app.post("/decrypt" , (req,res) => {
-        let enc = decrypt( req.body.input , process.env.encPassword , process.env.encScheme )
+        console.log( req.body )
+        let enc, status = ''
+        if (req.body.input.length == 0 || req.body.input === 'Empty String') {enc = 'Empty String' ; status = 'error'} else {
+            try {
+                enc = decrypt( req.body.input , process.env.encPassword , process.env.encScheme )   
+                status = 'okay'         
+            } catch (error) {
+                enc = 'Unable to decrypt string'
+                status = 'error'
+            }
+        }
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).send({ 'result': enc });
+        res.status(200).send({ 'result': enc , 'status': status });
     });
 
     app.get('*', function(req, res){
