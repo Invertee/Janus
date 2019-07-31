@@ -13,10 +13,14 @@ body {
 
 .main {
     background-color: #b0b4b6;
-    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(57, 85, 63, 0.4);
     padding: 15px;
     margin: auto;
     color: white;
+}
+
+.hidden {
+    -webkit-text-security : disc
 }
 
 #input {
