@@ -39,7 +39,6 @@ const appRouter = app => {
     });
 
     app.post("/decrypt" , (req,res) => {
-        console.log( req.body )
         let enc, status = ''
         if (req.body.input.length == 0 || req.body.input === 'Empty String') {enc = 'Empty String' ; status = 'error'} else {
             try {
