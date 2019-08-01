@@ -12,8 +12,6 @@ function fetchWrapper(url, options, timeout)
     });
 }
 
-
-
 function submit(action) {
     fetchWrapper( `/${action}`, 
     {
@@ -103,3 +101,21 @@ document.onkeyup = (e) => {
         addFlash('decrypt')
     }
   };
+
+window.addEventListener('DOMContentLoaded', () => {
+    fetchWrapper('https://api.quotable.io/random' , {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+        }, 10000 )
+    .then(data => {
+        return data.json();
+    })
+    .then(json => {
+        let div = document.getElementById('quote')
+        div.innerText = json.content
+        div.classList.add('fade-in')
+    })
+    .catch(err => {console.error(err)})
+});
